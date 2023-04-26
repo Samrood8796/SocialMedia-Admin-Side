@@ -1,13 +1,10 @@
 import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh'
-import babel from '@vitejs/plugin-babel'
+import react from '@vitejs/plugin-react'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    reactRefresh(),
-    babel({
-      extensions: ['.jsx'],
-      babelHelpers: 'bundled'
-    })
-  ],
+  plugins: [react()],
+   optimizeDeps: {
+    include: ['*.jsx']
+  }
 })
