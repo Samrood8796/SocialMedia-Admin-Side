@@ -19,6 +19,7 @@ const Login = () => {
         console.log(response.data);
         navigate('/');
       }).catch((err) => {
+        console.log(err);
         toast.error(err.response.data, { position: "top-center" });
       });
     }
