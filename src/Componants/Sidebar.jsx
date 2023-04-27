@@ -1,15 +1,18 @@
 import React from 'react'
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-
+import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
+import { SiSimpleanalytics } from 'react-icons/si'
+import { IoImageSharp } from 'react-icons/io5'
+import { CiLogout } from 'react-icons/ci'
+import { FaUsers } from 'react-icons/fa'
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const navigate = useNavigate()
   const Menus = [
-    { title: "Dashboard", src: "Chart_fill", to: '/' },
-    { title: "UserManagement", src: "User", gap: true, to: '/users' },
-    { title: "Post Management", src: "Search", to: '/posts' },
-    // { title: "Search", src: "Search" },
+    { title: "Dashboard", src: <SiSimpleanalytics />, to: '/' },
+    { title: "UserManagement", src: <FaUsers />, gap: true, to: '/users' },
+    { title: "Post Management", src: <IoImageSharp />, to: '/posts' },
   ];
   const userName = localStorage.getItem("userName")
   const handleLogout = () => {
@@ -21,18 +24,15 @@ const Sidebar = () => {
       className={` ${open ? "w-72" : "w-20 "
         } bg-gray-600 min-h-screen p-5  pt-8 relative duration-300`}
     >
-      <img
-        src="./src/assets/control.png"
-        className={`absolute cursor-pointer -right-0 top-9 w-7 border-dark-purple
+      <div
+        className={`absolute cursor-pointer -right-0 top-9 w-7 h-7 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
         onClick={() => setOpen(!open)}
-      />
+      >
+        <BsFillArrowLeftCircleFill />
+      </div>
+
       <div className="flex gap-x-4 items-center">
-        <img
-          src="./src/assets/logo.png"
-          className={`cursor-pointer duration-500 ${open && "rotate-[360deg]"
-            }`}
-        />
         <h1
           className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
             }`}
@@ -47,7 +47,7 @@ const Sidebar = () => {
             className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               ${Menu.gap ? "mt-8" : "mt-2"}  `}
           >
-            <img src={`./src/assets/${Menu.src}.png`} className='w-6 h-6' />
+            {Menu.src}
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               {Menu.title}
             </span>
@@ -57,7 +57,7 @@ const Sidebar = () => {
           <div
             onClick={handleLogout}
             className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2`}>
-            <img src={`./src/assets/logout.png`} className='w-6 h-6' />
+            <CiLogout/>
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               Logout
             </span>
