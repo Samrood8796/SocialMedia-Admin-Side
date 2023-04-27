@@ -16,6 +16,7 @@ const Login = () => {
         headers: { "Content-type": "application/json" }
       }).then((response) => {
         localStorage.setItem("userName", response.data);
+        console.log(response.data);
         navigate('/');
       }).catch((err) => {
         toast.error(err.response.data, { position: "top-center" });

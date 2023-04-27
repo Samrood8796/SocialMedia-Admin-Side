@@ -5,6 +5,7 @@ import Login from "./Pages/Login/Login";
 import Posts from "./Pages/Posts/Posts";
 const App = () => {
   const user = localStorage.getItem("userName")
+  console.log("dddd",user);
   return (
     <BrowserRouter>
       <Routes>
