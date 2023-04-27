@@ -18,6 +18,7 @@ const Login = () => {
         localStorage.setItem("userName", response.data);
         console.log(response.data);
         navigate('/');
+        window.location.reload()
       }).catch((err) => {
         console.log(err);
         toast.error(err.response.data, { position: "top-center" });
