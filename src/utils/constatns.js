@@ -1,4 +1,5 @@
-export const base_url = 'https://zwatch.tk'
+// export const base_url = 'https://zwatch.tk'
+export const base_url = 'http://localhost:3001'
 
 export const getPostsByMonth = '/api/admin/getPostsByMonth'
 export const getCounts = '/api/admin/getDashboardCount'
@@ -7,3 +8,4 @@ export const fetchPosts = '/api/admin/getallposts'
 export const deletePost = '/api/admin/deletePost'
 export const searchUser = '/api/admin/searchUser'
 export const searchPosts = '/api/admin/searchPost'
+export const fetchReportPosts = '/api/admin/report-posts'

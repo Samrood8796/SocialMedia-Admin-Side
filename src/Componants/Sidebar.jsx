@@ -13,7 +13,7 @@ const Sidebar = () => {
     { title: "Dashboard", src: <SiSimpleanalytics />, to: '/' },
     { title: "UserManagement", src: <FaUsers />, gap: true, to: '/users' },
     { title: "Post Management", src: <IoImageSharp />, to: '/posts' },
-    { title: "Report", src: <IoImageSharp />, to: '/posts' },
+    { title: "Report", src: <IoImageSharp />, to: '/report' },
   ];
   const userName = localStorage.getItem("userName")
   const handleLogout = () => {
