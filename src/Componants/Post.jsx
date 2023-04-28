@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from '../utils/axios';
 import { fetchPosts, searchPosts } from '../utils/constatns';
 import PostTable from './PostTable';
-const postsPerPage = 1
+const postsPerPage = 5
 export default function Table() {
     const [posts, setPosts] = useState([]);
     const [render, setRender] = useState(false);

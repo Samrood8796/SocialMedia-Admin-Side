@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from '../utils/axios'
 import { deletePost } from '../utils/constatns'
-const ReportTable = ({ post, index, render, setRender }) => {
+const ReportTable = ({ report, index, render, setRender }) => {
     const [open, setOpen] = useState(false)
     const handleReport = () => {
             if (confirm(`Remember you can't revert this`)) {
-                axios.put(`${deletePost}/${post._id}`).then((response) => {
+                axios.put(`${deletePost}/${report.postId._id}`).then((response) => {
                     console.log(response.data);
                     setRender(!render)
                     // alert('restricted successfully')
@@ -34,30 +34,28 @@ const ReportTable = ({ post, index, render, setRender }) => {
       }
     return (
         <>
-            <tr className="  border-b dark:bg-[#efefef] text-black dark:border-gray-700 " key={post._id}>
+            <tr className="  border-b dark:bg-[#efefef] text-black dark:border-gray-700 " key={report._id}>
                 <th scope="row" className="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
                     {index}
                 </th>
                 <td className="px-6 py-4 w-36">
-                    {post.image ?
-                        <img className='' src={post.image} alt='profilepic' /> :
+                    {report.postId.image ?
+                        <img className='' src={report.postId.image} alt='profilepic' /> :
                         <p>no image</p>
                     } 
                 </td>
                 <td className="px-6 py-4">
-                    {post?.author?.userName}
+                    {report?.reporter?.userName}
                 </td>
 
                 <td className="px-6 py-4">
-                    {formatDate(post.createdAt)}
+                    {formatDate(report.createdAt)}
                 </td>
                 <td className="px-6 py-4 object-fill ">
-                    <button onClick={(e) => setOpen(true)} className="bg-gray-600 text-white p-1.5 rounded-md btn">
-                        Details
-                    </button>
+                {report?.reason}
                 </td>
                 <td className="px-6 py-4 object-fill ">
-                    {post.isDeleted ?
+                    {report.postId.isDeleted ?
                         <p className=' p-1.5 '>Restricted</p>
                         :
                         <button onClick={handleReport} className="bg-gray-600 text-white p-1.5 rounded-md btn">
@@ -72,12 +70,12 @@ const ReportTable = ({ post, index, render, setRender }) => {
                         {/* Modal content */}
                         <div className="bg-gray-200 space-y-4 text-lg rounded-lg shadow-lg p-6">
                             <h2 className="text-lg font-bold mb-4">Details</h2>
-                            <p>UserName: {post.author.userName} </p>
-                            <p>Post Id: {post._id}</p>
-                            <p>Description: {post.desc}</p>
-                            <p>comments: {post.comments.length}</p>
-                            <p>likes: {Object.keys(post.likes).length}</p>
-                            <p>Posted On: {formatDate(post.createdAt)}</p>
+                            <p>UserName: {report.author.userName} </p>
+                            <p>report Id: {report._id}</p>
+                            <p>Description: {report.desc}</p>
+                            <p>comments: {report.comments.length}</p>
+                            <p>likes: {Object.keys(report.likes).length}</p>
+                            <p>reported On: {formatDate(report.createdAt)}</p>
                         </div>
                     </div>
                 </div>

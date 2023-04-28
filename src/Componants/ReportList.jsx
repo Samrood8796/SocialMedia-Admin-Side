@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from '../utils/axios';
 import { fetchReportPosts, searchPosts } from '../utils/constatns';
 import ReportTable from './ReportTable';
-const postsPerPage = 1
+const postsPerPage = 5
 const ReportList = () => {
     const [reportPosts, setReportedPosts] = useState([]);
     const [render, setRender] = useState(false);
@@ -26,7 +26,6 @@ const ReportList = () => {
     }, [render]);
     const searchBy = (e) => {
         let key = e.target.value;
-        console.log(key);
         if (!key) {
             getPosts()
         } else {
@@ -65,7 +64,7 @@ const ReportList = () => {
                             Date
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Details
+                            reason
                         </th>
                         <th scope="col" className="px-6 py-3">
                             post status
@@ -74,8 +73,8 @@ const ReportList = () => {
                 </thead>
                 <tbody className='overflow-scroll'>
                     {reportPosts.length !== 0 &&
-                        currentPosts.map((post, index) => (
-                            <ReportTable key={index} post={post} index={index + indexOfLastPost} setRender={setRender} render={render} />
+                        currentPosts.map((report, index) => (
+                            <ReportTable key={index} report={report} index={index + indexOfLastPost} setRender={setRender} render={render} />
                         ))}
                 </tbody>
             </table>
