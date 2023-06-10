@@ -21,7 +21,6 @@ export default function UserTable() {
     }
     const getUsers = async () => {
         const response = await axios.get(fetchUsers)
-        console.log(response.data[0]);
         setUsers(response.data)
     }
     useEffect(() => {
