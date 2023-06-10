@@ -21,6 +21,7 @@ export default function UserTable() {
     }
     const getUsers = async () => {
         const response = await axios.get(fetchUsers)
+        console.log(response.data[0]);
         setUsers(response.data)
     }
     useEffect(() => {
@@ -80,7 +81,7 @@ export default function UserTable() {
                 </thead>
                 <tbody>
 
-                    {users.length > 1 &&
+                    {users.length >= 1 &&
                         users?.map((user) => (
                             <tr className=" border-b dark:bg-[#efefef] text-black dark:border-gray-700" key={user._id}>
                                 <th scope="row" className="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
