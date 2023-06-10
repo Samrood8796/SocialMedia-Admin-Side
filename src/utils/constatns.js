@@ -1,5 +1,5 @@
-// export const base_url = 'https://zwatch.tk'
-export const base_url = 'http://localhost:3001'
+export const base_url = 'https://zwatch.tk'
+// export const base_url = 'http://localhost:3001'
 
 export const getPostsByMonth = '/api/admin/getPostsByMonth'
 export const getCounts = '/api/admin/getDashboardCount'
